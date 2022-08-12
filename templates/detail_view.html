@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section>
+{{blog_detail}}
+    <div class="container">
+        <div class="row mb-4">
+            <div class="col-lg-8">
+                <h1 class="text-success" >{{blog_detail.title}}</h1>
+                <p>{{blog_detail.overview}}</p>
+                <h4>{{blog_detail.created_on}}</h4>
+                <img src="{{blog_detail.thumbnail.url}}" style="width: 700px; height: 500px;" alt="">
+                <p>{{blog_detail.brief_overview}}</p>
+                <img src="{{blog_detail.seconed_thumbnail.url}}" style="width: 700px; height: 300px;" alt="">
+            </div>
+            <div class="col-lg-4 mt-4">
+                <div class="d-flex justify-content-between mt-4">
+                    <a href="{% url 'update_view' blog_detail.id %}"><button class="btn btn-warning">Update</button></a>
+                    <a href=""><button class="btn btn-danger">Delete</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+
+{% endblock content %}   

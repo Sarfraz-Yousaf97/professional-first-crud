@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="fname">Title:</label><br>
+    {{update_form.title}} <br><br>
+    <label for="lname">Author:</label><br>
+    {{update_form.author}} <br><br>
+    <label for="lname">author_profile:</label><br>
+    <input type="file" id="img" name="author_profile"value="{{update_object.author_profile}}" ><br>
+    <img src="{{update_object.author_profile.url}}" height="250px" alt="">
+    <br>
+    <br>
+
+    <label for="lname">thumbnail:</label><br>
+    <input type="file" id="img" name="thumbnail"value="{{update_object.thumbnail}}"> <br>
+    <img src="{{update_object.thumbnail.url}}" height="250px" alt="">
+    <label for="lname">seconed_thumbnail:</label><br>
+    <input type="file" id="img" name="seconed_thumbnail" value="{{update_object.seconed_thumbnail}}"> <br>
+    <img src="{{update_object.seconed_thumbnail.url}}" height="250px" alt="">
+    <label for="lname">overview:</label><br>
+    {{update_form.overview}} <br>
+    <label for="lname">brief_overview:</label><br>
+    {{update_form.brief_overview}} <br>
+    <input type="submit" value="Submit">
+  </form>
+
+
+{% endblock content %}   

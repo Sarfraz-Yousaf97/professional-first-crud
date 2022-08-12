@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+<section style="height: 450px; background: url({% static 'assets/image/hero.jpg' %}); background-size: cover;background-position: center center"  class="hero">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 mt-4">                                                                            <br> <br> <br><br><br>
+          <h1 class="text-white mt-4">Its My Professional Website For Blogs</h1>
+          <!-- <h1 class="text-white mt-4">Its My Professional Website For Blogs</h1> -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="featured-posts no-padding-top">
+    <div class="container">
+        <!-- Post-->
+        {% for blog in blog_list %}
+        <div class="row mt-4">
+            <div class="col col-lg-6" style="margin-top:100px ;">
+                <a href="{% url 'detail_view' blog.id %}"><h2>{{blog.title}}</h2></a>
+                <div class="mt-4">
+                    <p>{{blog.overview}}</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <img class="" style="width: 50px; " src="{{blog.author_profile.url}}" alt="">
+                    <p>{{blog.author}}</p>
+                    <p>{{blog.created_on|timesince}} ago</p>
+                </div>
+            </div>
+            <div class="col-lg-5"> 
+                <img class="" src="{{blog.thumbnail.url}}" style="height:400px ;" alt="">
+            </div>
+
+          </div>
+            {% endfor %}
+    </div> 
+  </section>
+  <section>
+    <div class="container">
+      <a href="{% url 'create_blog' %}"><button class="btn btn-primary">Create New</button></a>
+    </div>
+  </section>
+  <section>
+    <div class="container mt-4 mb-4">
+      <div class="row mt-4">
+        {% for blog in blog_all %}
+        <div class="col-lg-4">
+          <a href="{% url 'detail_view' blog.id %}"><h3>{{blog.title}}</h3></a>
+          <img src="{{blog.thumbnail.url}}" style="width: 300px;" alt="">
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  
+
+{% endblock content %}   
